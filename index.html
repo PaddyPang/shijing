@@ -129,13 +129,30 @@
         color: var(--gray-color);
       }
 
+      .container::before {
+        content: "";
+        position: absolute;
+        top: 80%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+        z-index: 9; /* 将遮罩置于内容下方 */
+        pointer-events: none; /* 使遮罩不可点击 */
+      }
+
       .vertical {
         writing-mode: vertical-rl;
         text-orientation: upright;
         height: 80%;
-        padding: 20px 0;
+        padding: 20px 0 20px 150px;
         overflow-y: unset;
         overflow-x: scroll;
+      }
+      .vertical.container::before {
+        top: 0;
+        right: 80%;
+        background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
       }
       .vertical.container h1 {
         margin-top: 0;
